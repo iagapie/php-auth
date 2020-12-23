@@ -1,4 +1,4 @@
-# CookieJar Bag
+# PHP Authentication
 
 [![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%208.0-8892BF.svg)](https://php.net/)
 [![Latest Version](https://img.shields.io/packagist/v/iagapie/php-auth.svg)](https://packagist.org/packages/iagapie/php-auth)
