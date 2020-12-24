@@ -42,7 +42,7 @@ class RemoteUserAuth extends AbstractPreAuthenticatedAuth
      */
     protected function extractUsername(ServerRequestInterface $request): ?string
     {
-        if ($username = $this->session->get(AuthManagerInterface::ATTR_AUTH_USERNAME)) {
+        if ($username = $this->session->get(AuthManagerInterface::ATTR_AUTH_USERNAME.$this->firewallName)) {
             return $username;
         }
 

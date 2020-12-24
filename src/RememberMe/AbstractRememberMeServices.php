@@ -190,7 +190,7 @@ abstract class AbstractRememberMeServices implements RememberMeServicesInterface
         // so we should still call it at the start of this method)
         $this->cookieJar->remove($this->options['name'], $this->options['path']);
 
-        $this->session->remove(AuthManagerInterface::ATTR_AUTH_USERNAME);
+        $this->session->remove(AuthManagerInterface::ATTR_AUTH_USERNAME.$this->firewallName);
 
         return $this->onLoginSuccess($request, $token);
     }

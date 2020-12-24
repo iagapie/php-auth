@@ -88,7 +88,7 @@ class RememberMeAuth implements InteractiveAuthInterface
         TokenInterface $token,
         string $firewallName
     ): ServerRequestInterface {
-        $this->session->remove(AuthManagerInterface::ATTR_AUTH_USERNAME);
+        $this->session->remove(AuthManagerInterface::ATTR_AUTH_USERNAME.$firewallName);
 
         return $request; // let the original request continue
     }

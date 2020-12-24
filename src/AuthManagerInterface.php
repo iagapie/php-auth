@@ -10,7 +10,7 @@ use Psr\Http\Message\ServerRequestInterface;
 
 interface AuthManagerInterface
 {
-    public const ATTR_AUTH_USERNAME = '__-_-AUTH-_-USERNAME-_-__';
+    public const ATTR_AUTH_USERNAME = '__auth_username.';
 
     /**
      * @param ServerRequestInterface $request

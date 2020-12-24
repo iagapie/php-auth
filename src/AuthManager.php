@@ -109,7 +109,7 @@ class AuthManager implements AuthManagerInterface
      */
     public function logout(ServerRequestInterface $request): ServerRequestInterface
     {
-        $this->session->remove(self::ATTR_AUTH_USERNAME);
+        $this->session->remove(self::ATTR_AUTH_USERNAME.$this->firewallName);
 
         return $this->eventDispatcher->dispatch(
             new LogoutEvent($request, $this->tokenStorage->getToken())
@@ -177,7 +177,7 @@ class AuthManager implements AuthManagerInterface
     ): ServerRequestInterface {
         $this->tokenStorage->setToken($authToken);
 
-        $this->session->set(self::ATTR_AUTH_USERNAME, $authToken->getUsername());
+        $this->session->set(self::ATTR_AUTH_USERNAME.$this->firewallName, $authToken->getUsername());
 
         $request = $auth->onSuccess($request, $authToken, $this->firewallName);
 
@@ -206,7 +206,7 @@ class AuthManager implements AuthManagerInterface
         AuthInterface $auth,
         AuthException $exception
     ): ServerRequestInterface {
-        $this->session->remove(self::ATTR_AUTH_USERNAME);
+        $this->session->remove(self::ATTR_AUTH_USERNAME.$this->firewallName);
 
         $this->logger->info(
             'Authenticator failed.',
